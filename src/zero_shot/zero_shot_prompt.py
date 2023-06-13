@@ -47,13 +47,26 @@ class ZeroShotPrompt:
 
         Returns:
             str: The filled text with variables replaced.
+
+        Raises:
+            ValueError: If there are extra variables or missing values for required variables.
         """
+        expected_variables = self._extract_template_variables()
+        extra_variables = [var for var in variables if var not in expected_variables]
+
+        if extra_variables:
+            raise ValueError(f"Unexpected variables: {', '.join(extra_variables)}")
+
+        missing_variables = [var for var in expected_variables if var not in variables]
+        if missing_variables:
+            raise ValueError(f"Missing values for variables: {', '.join(missing_variables)}")
+
         variables_instance = self._variables_model(**variables)
-        filled_text = self._template.format(**variables_instance.dict())
+        filled_text = self.template.format(**variables_instance.dict())
         return filled_text
 
 
 if __name__ == "__main__":
     zero_shot_template = ZeroShotPrompt("Good morning, {name}!")
-    prompt = zero_shot_template.fill_variables(name="Danilo")
+    prompt = zero_shot_template.fill_variables()
     print(prompt)
