@@ -13,7 +13,7 @@ class ZeroShotPrompt:
     filled text.
     """
 
-    def __init__(self, template):
+    def __init__(self, template: str):
         self._template = template
         self._variables_model = self._infer_variables_model()
 

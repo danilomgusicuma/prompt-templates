@@ -1,6 +1,6 @@
 import unittest
 
-from src.zero_shot.zero_shot_prompt import ZeroShotPrompt
+from prompt_templates.zero_shot.zero_shot_prompt import ZeroShotPrompt
 
 
 class TextTemplateTests(unittest.TestCase):
