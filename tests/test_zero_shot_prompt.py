@@ -3,7 +3,7 @@ import unittest
 from prompt_templates.zero_shot.zero_shot_prompt import ZeroShotPrompt
 
 
-class TextTemplateTests(unittest.TestCase):
+class TestZeroShotPrompt(unittest.TestCase):
     def test_fill_variables(self):
         template = "Hello, {name}! Today is {day}."
         my_template = ZeroShotPrompt(template)

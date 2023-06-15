@@ -1,8 +1,10 @@
 from pydantic import create_model
 import re
 
+from prompt_templates.base_prompt import BasePrompt
 
-class ZeroShotPrompt:
+
+class ZeroShotPrompt(BasePrompt):
     """
     A class representing a text template with variable placeholders that can be replaced with actual values.
 
